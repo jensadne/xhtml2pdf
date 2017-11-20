@@ -45,7 +45,7 @@ except:
 
 log = logging.getLogger("xhtml2pdf")
 
-MAX_IMAGE_RATIO = 0.95
+MAX_IMAGE_RATIO = 0.999
 PRODUCER = "xhtml2pdf <https://github.com/xhtml2pdf/xhtml2pdf/>"
 
 
