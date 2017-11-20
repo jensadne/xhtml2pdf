@@ -6,6 +6,7 @@ from reportlab.platypus.doctemplate import NextPageTemplate, FrameBreak
 from reportlab.platypus.flowables import Spacer, HRFlowable, PageBreak, Flowable
 from reportlab.platypus.frames import Frame
 from reportlab.platypus.paraparser import tt2ps, ABag
+from reportlab.pdfgen.canvas import Canvas
 from xhtml2pdf import xhtml2pdf_reportlab
 from xhtml2pdf.util import getColor, getSize, getAlign, dpi96
 from xhtml2pdf.xhtml2pdf_reportlab import PmlImage, PmlPageTemplate
@@ -701,6 +702,9 @@ class pisaTagPDFBARCODE(pisaTag):
         if codeName in ("EAN13", "EAN8"):
             barWidth = max(barWidth, 0.264 * mm)
             fontSize = max(fontSize, 2.75 * mm)
+        # with QR codes barWidth is used for width of the whole box
+        elif codeName == 'QR':
+            barWidth = max(barWidth, 15*mm)
         else:  # Code39 etc.
             barWidth = max(barWidth, 0.0075 * inch)
 

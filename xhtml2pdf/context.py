@@ -158,6 +158,7 @@ class pisaCSSBuilder(css.CSSBuilder):
         data = result[0].values()[0]
         if "src" not in data:
             # invalid - source is required, ignore this specification
+            log.warn(self.c.warning('@fontface, src missing'))
             return {}, {}
         names = data["font-family"]
 
@@ -845,7 +846,6 @@ class pisaContext(object):
             self.fontList[str(a)] = fontname
 
     def loadFont(self, names, src, encoding="WinAnsiEncoding", bold=0, italic=0):
-
         # XXX Just works for local filenames!
         if names and src:
 
